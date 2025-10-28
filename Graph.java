@@ -15,20 +15,19 @@ public class Graph<T> {
         }
     }
 
-
-    //add a new node (actor) each node is an actor
+    //add a new node (actor) each node is an actor (alla nm-id)
     public void addNode(T s) {
-        map.put(s, new LinkedList<T>());
+        map.put(s, (List<Edge<T>>) new LinkedList<T>());
     }
 
     //add a new edge
     public void addEdge(T source, T destination, int rating, String movieName) {
-            addNode(source);
-            addNode(destination);
-        map.get(source).add(new Edge<>(destination, movieName));
-        map.get(destination).add(new Edge<>(source, movieName));
-        map.get(source).add(destination);
-    }
+          addNode(source);
+          addNode(destination);
+       map.get(source).add(new Edge<>(destination, movieName));
+       map.get(destination).add(new Edge<>(source, movieName));
+       map.get(source).add((Edge<T>) destination);
+   }
 
     //counts the number of nodes (actors)
     public void countNodes() {
@@ -39,7 +38,6 @@ public class Graph<T> {
         int count = 0;
         for (T v: map.keySet()) {
             count += map.get(v).size()/2; //divide by 2 since the graph is by directional or do we want to count both ways?
-
         }
         System.out.println("The graph has " + count + " edges.");
     }
