@@ -10,8 +10,6 @@ public class Main {
         //File actors = new File("six-degrees-of-imdb-ressursside/marvel_actors.tsv");
         
 
-
-
         ArrayList<Movie> movieList = new ArrayList<Movie>();
 
         //Map<String, Movie> movies = new HashMap<>();
