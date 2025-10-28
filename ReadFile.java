@@ -1,4 +1,6 @@
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Map;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 
@@ -6,7 +8,7 @@ public class ReadFile {
     public static void main(String[] args) throws FileNotFoundException {
         Graph<String> marvelGraph = new Graph<>();
         File actors = new File("six-degrees-of-imdb-ressursside/marvel_actors.tsv");
-        File movies = new File("six-degrees-of-imdb-ressursside/marvel_movies.tsv");
+        
 
         //Read movies
         //readFile<>(movies);
@@ -18,8 +20,10 @@ public class ReadFile {
         marvelGraph.countNodes();
         marvelGraph.countEdges();
 
+        ArrayList<Movie> movieList = new ArrayList<Movie>();
+
         Map<String, Movie> movies = new Hashmap<>(){
-            try (Scanner fileReader = new Scanner(new File("six-degrees-of-imdb-ressursside/marvel_actors.tsv")) {
+            try (Scanner fileReader = new Scanner(new File("six-degrees-of-imdb-ressursside/marvel_actors.tsv"))( {
                 while (fileReader.hasNextLine()) {
                     //store the data in fileData, continue if theres another line and remove spaces at the end
                     String[] parts = fileReader.nextLine().trim();

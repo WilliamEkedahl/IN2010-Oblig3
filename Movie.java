@@ -2,21 +2,19 @@ import java.io.*;
 import java.util.*;
 
 public class Movie {
+    String ttid;
+    String title;
+    Double rating;
 
-    String titel;
-    String rating;
-
-    public static void movie(String ttid, String titel, double rating){
+    public Movie(String ttid, String title, double rating){
         this.ttid = ttid;
-        this.titel = titel;
+        this.title = title;
         this.rating = rating;
-    }
+    } 
 
-   ArrayList<Movie> movies = new ArrayList<Movie>();
-
-    @Ovveride
-    public String toString(String ttid, String titel, double rating){
-        String movie = System.out.printf("this is the list of movies %s %s %s%n", ttid, titel, rating);
-        return movie;
+    @Override
+    public String toString(){
+        return "this is the list of movies %s %s %s%n"+ ttid+ title+ rating;
+        
     }
 }
