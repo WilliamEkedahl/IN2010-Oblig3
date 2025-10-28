@@ -22,8 +22,9 @@ public class ReadFile {
 
         ArrayList<Movie> movieList = new ArrayList<Movie>();
 
-        Map<String, Movie> movies = new Hashmap<>(){
-            try (Scanner fileReader = new Scanner(new File("six-degrees-of-imdb-ressursside/marvel_actors.tsv"))( {
+        Map<String, Movie> movies = new Hashmap<>();
+        {
+            try (Scanner fileReader = new Scanner(new File("six-degrees-of-imdb-ressursside/marvel_actors.tsv"))) {
                 while (fileReader.hasNextLine()) {
                     //store the data in fileData, continue if theres another line and remove spaces at the end
                     String[] parts = fileReader.nextLine().trim();
