@@ -2,16 +2,20 @@ import java.util.*;
 
 public class Graph<T> {
     //Adjacency list: each node has a list of neighbours
+    //private Map<Actor, List<adjecent actors> 
     private Map<T, List<Edge<T>>> map = new HashMap<>();
 
     //inner class for edges
     public static class Edge<T> {
         public T target;
         public String movieName;
+        public Double rating; 
 
         public Edge(T target, String movieName){
             this.target = target;
             this.movieName = movieName;
+            this.rating = rating; // må legges til ved vekting
+
         }
     }
 
@@ -36,9 +40,22 @@ public class Graph<T> {
     public void countEdges(){
         int count = 0;
         for (T v: map.keySet()) {
-            count += map.get(v).size()/2; //divide by 2 since the graph is by directional or do we want to count both ways?
+            count += map.get(v).size(); 
         }
+        count = count/2; //divide by 2 since the graph is by directional or do we want to count both ways?
         System.out.println("The graph has " + count + " edges.");
+    }
+
+    //counts the number of edges
+    public void printEdges(){
+        //int count = 0;
+        //list of adjecent actors, by movies (edge). 
+        for (T actor: map.keySet()) {
+            List<Edge<T>> v = map.get(actor);
+            for (Edge<T> edge : v){
+                System.out.println("Edge/movie name: " + edge.movieName + ", Rating: Mangler!");
+            }
+        }
     }
 }
 

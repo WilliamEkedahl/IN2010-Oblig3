@@ -27,8 +27,10 @@ public class Main {
             System.out.println("The file could not be read while reading movies");
             e.printStackTrace();
         }
+
+        //Debug - print ut list of movies-----
         for (Movie movie : movieList) {
-            System.out.println(movie.toString());
+            //System.out.println(movie.toString());          //-----------------------------------
         }
 
         //alla actors skal med oavsett om det spelar i en film som vi inte har data om
@@ -53,8 +55,10 @@ public class Main {
             System.out.println("The file could not be read while reading actors");
             e.printStackTrace();
         }
+
+        //Debug - print ut list of actors-----
         for (Actor actor : actorList) {
-            System.out.println(actor.toString());
+            //System.out.println(actor.toString());    // ---------------------------------
         }
 
         for (Movie movie : movieList) {
@@ -65,8 +69,10 @@ public class Main {
             //find all actors for each Movie and add into a new smaller arrayList
             ArrayList<Actor> actorsInMovie = new ArrayList<>();
             for (Actor actor : actorList) {
+                //System.out.println(actor.toString());
                 if (actor.getTtids().contains(movieId)) {
                     actorsInMovie.add(actor);
+                    //System.out.println(actor.toString());
                 }
             }
 
@@ -84,6 +90,9 @@ public class Main {
         //print info about the graph
         marvelGraph.countNodes();
         marvelGraph.countEdges();
+        marvelGraph.printEdges();      //Funker!
+
+
 
     }
 }
