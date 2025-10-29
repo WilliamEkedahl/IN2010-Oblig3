@@ -14,7 +14,7 @@ public class Movie {
 
     @Override
     public String toString(){
-        return "this is the list of movies %s %s %s%n"+ ttid+ title+ rating;
+        return String.format("this is the list of movies %s  %s %f", ttid, title, rating);
         
     }
 }
