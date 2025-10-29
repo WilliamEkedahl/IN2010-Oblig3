@@ -53,7 +53,8 @@ public class Graph<T> {
         for (T actor: map.keySet()) {
             List<Edge<T>> v = map.get(actor);
             for (Edge<T> edge : v){
-                System.out.println("Edge/movie name: " + edge.movieName + ", Rating: "+Double.toString(edge.rating));
+                //System.out.println("Edge/movie name: " + edge.movieName + ", Rating: "+Double.toString(edge.rating));
+                System.out.println("=== [ " + edge.movieName + " " +Double.toString(edge.rating) + " ] ===> ");
             }
         }
     }
