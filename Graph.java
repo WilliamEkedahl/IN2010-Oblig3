@@ -11,7 +11,7 @@ public class Graph<T> {
         public String movieName;
         public Double rating; 
 
-        public Edge(T target, String movieName){
+        public Edge(T target, String movieName, double rating){
             this.target = target;
             this.movieName = movieName;
             this.rating = rating; // må legges til ved vekting
@@ -25,11 +25,11 @@ public class Graph<T> {
     }
 
     //add a new edge
-    public void addEdge(T source, T destination, int rating, String movieName) {
+    public void addEdge(T source, T destination, double rating, String movieName) {
           addNode(source);
           addNode(destination);
-       map.get(source).add(new Edge<>(destination, movieName));
-       map.get(destination).add(new Edge<>(source, movieName));
+       map.get(source).add(new Edge<>(destination, movieName, rating));
+       map.get(destination).add(new Edge<>(source, movieName, rating));
    }
 
     //counts the number of nodes (actors)
@@ -53,7 +53,7 @@ public class Graph<T> {
         for (T actor: map.keySet()) {
             List<Edge<T>> v = map.get(actor);
             for (Edge<T> edge : v){
-                System.out.println("Edge/movie name: " + edge.movieName + ", Rating: Mangler!");
+                System.out.println("Edge/movie name: " + edge.movieName + ", Rating: "+Double.toString(edge.rating));
             }
         }
     }

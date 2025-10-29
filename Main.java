@@ -82,7 +82,7 @@ public class Main {
                     Actor a1 = actorsInMovie.get(i);
                     Actor a2 = actorsInMovie.get(j);
                     // Add edges between all the different actors
-                    marvelGraph.addEdge(a1.getNmid(), a2.getNmid(), (int) movieRating, movieTitle);
+                    marvelGraph.addEdge(a1.getNmid(), a2.getNmid(), movieRating, movieTitle);
                 }
             }
         }
