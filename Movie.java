@@ -17,4 +17,16 @@ public class Movie {
         return String.format("this is the list of movies %s  %s %f", ttid, title, rating);
         
     }
+
+    public String getTtid(){
+        return ttid;
+    }
+
+    public String getTitle(){
+        return title;
+    }
+
+    public double getRating(){
+        return rating;
+    }
 }

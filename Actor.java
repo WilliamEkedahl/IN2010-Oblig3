@@ -18,5 +18,17 @@ public class Actor {
         return String.format("this is the list of Actors %s %s %s", nmid ,name, ttids);  // ttids skriver ut minneverdi
         
     }
+
+    public String getNmid(){
+        return nmid;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public ArrayList<String> getTtids(){
+        return ttids;
+    }
 }
 

@@ -46,6 +46,7 @@ public class Main {
                 }
                 Actor temp = new Actor(nmid, name, ttid);
                 actorList.add(temp);
+                //adds actors who are the only actors in a specific movie / no connections commponents of size 1
                 marvelGraph.addNode(nmid);
             }
         } catch (FileNotFoundException e) {
@@ -56,13 +57,44 @@ public class Main {
             System.out.println(actor.toString());
         }
 
-        // if nmid 1 + nmid 2 has the same ttid make a new edge
-        //marvelGraph.addEdge
+        for (Movie movie : movieList) {
+            String movieId = movie.getTtid();
+            String movieTitle = movie.getTitle();
+            double movieRating = movie.getRating();
+
+            //find all actors for each Movie and add into a new smaller arrayList
+            ArrayList<Actor> actorsInMovie = new ArrayList<>();
+            for (Actor actor : actorList) {
+                if (actor.getTtids().contains(movieId)) {
+                    actorsInMovie.add(actor);
+                }
+            }
+
+            //connect all actors in the movie to each other
+            for (int i = 0; i < actorsInMovie.size(); i++) {
+                for (int j = i + 1; j < actorsInMovie.size(); j++) {
+                    Actor a1 = actorsInMovie.get(i);
+                    Actor a2 = actorsInMovie.get(j);
+                    // Add edges between all the different actors
+                    marvelGraph.addEdge(a1.getNmid(), a2.getNmid(), (int) movieRating, movieTitle);
+                }
+            }
+        }
 
         //print info about the graph
         marvelGraph.countNodes();
         marvelGraph.countEdges();
+
     }
 }
 
+
+//for each movie in Movie
+//for each ttid in actor that matches the ttid in movie
+//store in a new array
+//make edges and connections with all of the tts in that graph
+//marvelGraph.addEdge(Anmid, Anmid, title, rating);
+
+// if nmid 1 + nmid 2 has the same ttid make a new edge
+//marvelGraph.addEdge
 
