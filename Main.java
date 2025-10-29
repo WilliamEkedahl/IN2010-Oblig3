@@ -3,10 +3,11 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException {
-        Graph<String> marvelGraph = new Graph<>();
+        //Graph<String> marvelGraph = new Graph<>();
         //File actors = new File("six-degrees-of-imdb-ressursside/marvel_actors.tsv");
         
 
@@ -14,16 +15,21 @@ public class Main {
 
         //Map<String, Movie> movies = new HashMap<>();
         
-            try (Scanner fileReader = new Scanner(new File("six-degrees-of-imdb-ressursside/marvel_actors.tsv"))) {
+            try (Scanner fileReader = new Scanner(new File("six-degrees-of-imdb-ressursside/marvel_movies.tsv"))) {
                 while (fileReader.hasNextLine()) {
                     //store the data in fileData, continue if theres another line and remove spaces at the end
                     String line = fileReader.nextLine().trim();
+                    //System.out.println(line);
                     String[] parts = line.split("\t");
-                    
+                    //System.out.println(Arrays.toString(parts));
                     String ttid = parts[0];
+                    //System.out.println(ttid);
                     String title = parts[1];
+                    //System.out.println(title);
                     double rating = Double.parseDouble(parts[2]);
+                    //System.out.println(rating);
                     Movie temp = new Movie(ttid,title,rating);
+                    System.out.println(temp.toString());
                     movieList.add(temp);
                 }
             } catch (FileNotFoundException e) {
@@ -34,8 +40,8 @@ public class Main {
 
 
                 //print info about the graph
-        marvelGraph.countNodes();
-        marvelGraph.countEdges();
+        //marvelGraph.countNodes();
+        //marvelGraph.countEdges();
     }
 }
 
