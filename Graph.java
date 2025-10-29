@@ -17,7 +17,7 @@ public class Graph<T> {
 
     //add a new node (actor) each node is an actor (alla nm-id)
     public void addNode(T s) {
-        map.put(s, (List<Edge<T>>) new LinkedList<T>());
+        map.putIfAbsent(s, new LinkedList<Edge<T>>());
     }
 
     //add a new edge
@@ -26,7 +26,6 @@ public class Graph<T> {
           addNode(destination);
        map.get(source).add(new Edge<>(destination, movieName));
        map.get(destination).add(new Edge<>(source, movieName));
-       map.get(source).add((Edge<T>) destination);
    }
 
     //counts the number of nodes (actors)
